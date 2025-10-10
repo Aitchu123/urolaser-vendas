@@ -143,7 +143,6 @@ export const courseBenefits = [
   "Atualizações gratuitas do curso",
   "Comunidade exclusiva de profissionais e interessados",
   "Material didático completo e acessível",
-  "Aulas práticas em laboratório",
   "Mentoria individual personalizada",
   "Curso adaptado para diferentes níveis de conhecimento",
   "Oportunidades de networking na área cirúrgica",

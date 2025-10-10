@@ -43,12 +43,11 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            O que dizem nossos alunos
+          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4 font-heading">
+            O Que Nossos <span style={{ color: "#6ed5d5" }}>Alunos Dizem</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Depoimentos reais de profissionais que transformaram suas carreiras 
-            com nosso curso de tecnologia Urolaser.
+          <p className="text-xl text-muted-foreground">
+            Resultados reais de quem já transformou sua carreira
           </p>
         </motion.div>
 
@@ -124,7 +123,7 @@ const Testimonials = () => {
               Junte-se a centenas de profissionais de sucesso
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Não perca a oportunidade de se especializar na tecnologia mais avançada 
+              Não perca a oportunidade de se especializar na tecnologia mais avançada
               da urologia moderna. Sua carreira merece esse investimento.
             </p>
             <motion.button

@@ -9,6 +9,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { AlertTriangle, DollarSign, Clock, Briefcase, GraduationCap, HeartCrack } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const painPoints = [
   {
@@ -145,62 +146,62 @@ export default function Dor() {
         >
           {painPoints.map((point) => (
             <motion.div
-                key={point.id}
-                variants={cardVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className="relative bg-white rounded-xl p-6 border border-gray-100 overflow-hidden"
-                style={{
-                  transformStyle: "preserve-3d",
-                  perspective: "1000px"
-                }}
+              key={point.id}
+              variants={cardVariants}
+              whileHover="hover"
+              whileTap="tap"
+              className="relative bg-white rounded-xl p-6 border border-gray-100 overflow-hidden"
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
+            >
+              {/* Efeito de brilho no hover */}
+              <motion.div
+                variants={glowVariants}
+                className="absolute inset-0 bg-gradient-to-br from-[#e84e3c]/10 to-transparent rounded-xl"
+              />
+
+              {/* Border Beam animação */}
+              <BorderBeam
+                colorFrom="#e84e3c"
+                colorTo="#e84e3c"
+                duration={4}
+                size={60}
+                reverse={true}
+                borderWidth={2}
+              />
+
+              {/* Efeito de borda animada - mantido como backup */}
+              <motion.div
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute inset-0 w-full h-full opacity-0"
               >
-                {/* Efeito de brilho no hover */}
-                <motion.div
-                  variants={glowVariants}
-                  className="absolute inset-0 bg-gradient-to-br from-[#e84e3c]/10 to-transparent rounded-xl"
-                />
-                
-                {/* Border Beam animação */}
-                <BorderBeam 
-                  colorFrom="#e84e3c" 
-                  colorTo="#e84e3c" 
-                  duration={4} 
-                  size={60}
-                  reverse={true}
-                  borderWidth={2}
-                />
-                
-                {/* Efeito de borda animada - mantido como backup */}
-                <motion.div
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                  className="absolute inset-0 w-full h-full opacity-0"
+                <svg
+                  className="absolute inset-0 w-full h-full"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none"
                 >
-                  <svg
-                    className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 100 100"
+                  <motion.rect
+                    x="0"
+                    y="0"
+                    width="100"
+                    height="100"
+                    rx="10"
+                    stroke="#e84e3c"
+                    strokeWidth="0.5"
+                    strokeDasharray="0 1"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 2, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                  >
-                    <motion.rect
-                      x="0"
-                      y="0"
-                      width="100"
-                      height="100"
-                      rx="10"
-                      stroke="#e84e3c"
-                      strokeWidth="0.5"
-                      strokeDasharray="0 1"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 2, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
-                      fill="none"
-                    />
-                  </svg>
-                </motion.div>
+                  />
+                </svg>
+              </motion.div>
 
               <div className="relative z-10">
                 <motion.div
@@ -233,6 +234,19 @@ export default function Dor() {
         >
           <p className="text-xl font-semibold text-[#e84e3c]">
             A Urolaser tem a solução para transformar sua carreira em apenas 8 semanas!
+          </p>
+        </motion.div>
+
+        {/* Nova seção - É hora de MUDAR ESSA HISTÓRIA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <p className="text-base leading-6 mb-4">
+            É hora de <span className="text-[#00a8cc] text-2xl leading-8 font-bold">MUDAR ESSA HISTÓRIA</span> 👇
           </p>
         </motion.div>
       </div>

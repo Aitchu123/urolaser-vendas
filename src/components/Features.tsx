@@ -10,6 +10,7 @@ import { Zap, Users, Shield, TrendingUp, Stethoscope, Award, BookOpen, Clock } f
 import { courseFeatures } from "@/constants";
 import { WavyBackground } from "./ui/wavy-background";
 import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 const iconMap = {
   Zap,
@@ -51,7 +52,7 @@ const Features = () => {
     target: sectionRef,
     offset: ["start end", "end start"]
   });
-  
+
   // Transformações para efeito de paralaxe
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0.6, 1, 1, 0.6]);
@@ -60,7 +61,7 @@ const Features = () => {
     {
       id: 1,
       title: "Tecnologia de Ponta",
-      description: "Aprenda com os equipamentos mais modernos do mercado de urologia laser",
+      description: "Aprenda com os equipamentos mais modernos do mercado de representação hospitalar",
       icon: "Zap"
     },
     {
@@ -72,19 +73,19 @@ const Features = () => {
     {
       id: 3,
       title: "Certificação Reconhecida",
-      description: "Certificado válido em todo território nacional e aceito pelos principais hospitais",
+      description: "Certificado válido em todo território nacional e aceito pelos principais empresas",
       icon: "Shield"
     },
     {
       id: 4,
-      title: "Aulas Práticas",
-      description: "Mais de 80% do curso é focado em prática clínica com pacientes reais",
+      title: "Inserção Rápida no Mercado",
+      description: "Metodologia prática e tranquila que prepara você para atuar com segurança em tempo recorde",
       icon: "Stethoscope"
     },
     {
       id: 5,
-      title: "Metodologia Avançada",
-      description: "Ensino baseado em casos clínicos reais e simulações de alta fidelidade",
+      title: "Material Didático Completo",
+      description: "Acesso a apostilas, vídeos, provas e IA personalizada que acelera seu aprendizado em até 3×",
       icon: "BookOpen"
     },
     {
@@ -115,22 +116,22 @@ const Features = () => {
             waveOpacity={0.6}
             className="w-screen"
           >
-            <div className="py-8 px-4 md:px-8 relative z-10">
-              <motion.h2 
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+            <div className="py-1 px-4 md:px-8 relative z-10">
+              <motion.h2
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2"
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
                 Por que escolher nosso curso?
               </motion.h2>
-              <motion.p 
+              <motion.p
                 className="text-xl text-gray-600 max-w-3xl mx-auto"
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
-                Oferecemos a formação mais completa em tecnologia Urolaser do Brasil,
+                Oferecemos a formação mais completa em Representação Hospitalar do Brasil,
                 acessível tanto para profissionais de saúde quanto para interessados em ingressar na área cirúrgica.
               </motion.p>
             </div>
@@ -142,35 +143,42 @@ const Features = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 max-w-7xl mx-auto"
         >
-          {features.map((feature) => {
+          {features.map((feature, index) => {
             const IconComponent = iconMap[feature.icon as keyof typeof iconMap];
 
             return (
               <motion.div
                 key={feature.id}
                 variants={itemVariants}
-                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#85c5c7]/30"
+                className={cn(
+                  "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
+                  (index === 0 || index === 3) && "lg:border-l dark:border-neutral-800",
+                  index < 3 && "lg:border-b dark:border-neutral-800"
+                )}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#85c5c7]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {index < 3 && (
+                  <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-[#85c5c7]/10 to-transparent pointer-events-none" />
+                )}
+                {index >= 3 && (
+                  <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-[#85c5c7]/10 to-transparent pointer-events-none" />
+                )}
 
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-[#85c5c7]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#85c5c7]/20 transition-colors duration-300">
-                    <IconComponent className="w-8 h-8 text-[#85c5c7]" />
-                  </div>
-
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-[#85c5c7] transition-colors duration-300">
-                    {feature.title}
-                  </h3>
-
-                  <p className="text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
+                <div className="mb-4 relative z-10 px-10 text-[#85c5c7]">
+                  <IconComponent className="w-8 h-8" />
                 </div>
 
-                {/* Hover effect border */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#85c5c7]/20 transition-colors duration-300"></div>
+                <div className="text-lg font-bold mb-2 relative z-10 px-10">
+                  <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-[#85c5c7] transition-all duration-200 origin-center" />
+                  <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
+                    {feature.title}
+                  </span>
+                </div>
+
+                <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
+                  {feature.description}
+                </p>
               </motion.div>
             );
           })}
@@ -184,24 +192,6 @@ const Features = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-20 bg-gradient-to-r from-[#85c5c7]/10 to-[#85c5c7]/5 rounded-3xl p-8 md:p-12"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-[#85c5c7] mb-2">500+</div>
-              <div className="text-gray-600 font-medium">Profissionais Formados</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-[#85c5c7] mb-2">98%</div>
-              <div className="text-gray-600 font-medium">Taxa de Satisfação</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-[#85c5c7] mb-2">15+</div>
-              <div className="text-gray-600 font-medium">Anos de Experiência</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-[#85c5c7] mb-2">24/7</div>
-              <div className="text-gray-600 font-medium">Suporte Disponível</div>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

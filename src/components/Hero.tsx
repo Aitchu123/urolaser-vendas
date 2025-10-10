@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { LayoutTextFlip } from "@/components/ui/layout-text-flip";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
+import { AuroraText } from "./ui/aurora-text";
 import {
   type Variants,
   motion,
@@ -111,9 +112,13 @@ const Hero = () => {
             className="text-4xl font-semibold !leading-tight mb-4 md-text-5xl md:mb-5 lg:text-6xl"
           >
             Ganhe até{" "}
-            <span className="bg-gradient-to-r from-[#00a8cc] via-[#85c5c7] to-[#00a8cc] bg-clip-text text-transparent drop-shadow-sm">
+            <AuroraText
+              colors={["#00a8cc", "#85c5c7", "#d1d1d1", "#00a8cc", "#85c5c7", "#ffffff"]}
+              speed={2.5}
+              className="drop-shadow-lg animate-glow font-extrabold"
+            >
               R$7.000
-            </span>
+            </AuroraText>
             <motion.span
               className="relative isolate ms-4 inline-block"
               initial={{ rotate: -5 }}

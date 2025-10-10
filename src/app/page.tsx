@@ -13,6 +13,8 @@ import EnrollmentForm from "@/components/EnrollmentForm";
 import StickyCallToAction, { useStickyCallToAction } from "@/components/StickyCallToAction";
 import InstitutionsScroll from "@/components/InstitutionsScroll";
 import Dor from "@/components/Dor";
+import FeaturesSectionDemo from "@/components/features-section-demo-3";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   const { isVisible, handleDismiss } = useStickyCallToAction();
@@ -22,6 +24,7 @@ export default function Home() {
       <Hero />
       <InstitutionsScroll />
       <Dor />
+      <FeaturesSectionDemo />
       <Features />
       <Benefits />
       <Testimonials />
@@ -30,6 +33,10 @@ export default function Home() {
         isVisible={isVisible}
         onDismiss={handleDismiss}
         position="bottom"
+      />
+      <WhatsAppButton
+        phoneNumber="5511999999999"
+        message="Olá! Gostaria de saber mais sobre o Curso de Representação Hospitalar da Urolaser. Vim através do site!"
       />
     </main>
   );

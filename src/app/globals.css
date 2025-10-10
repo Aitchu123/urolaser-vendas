@@ -72,7 +72,24 @@
       background-position: calc(100% + var(--shiny-width)) 0;
     }
   }
-}
+  --animate-aurora: aurora 8s ease-in-out infinite alternate
+;
+  @keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);}
+  25% {
+    background-position: 50% 100%;
+    transform: rotate(5deg) scale(1.1);}
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(-3deg) scale(0.95);}
+  75% {
+    background-position: 50% 0%;
+    transform: rotate(3deg) scale(1.05);}
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);}}}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -253,6 +270,22 @@ html {
   .small-text {
     @apply text-sm leading-normal;
     font-family: var(--font-manrope);
+  }
+
+  /* Animação personalizada para texto chamativo */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px #00a8cc, 0 0 10px #00a8cc, 0 0 15px #85c5c7;
+      transform: scale(1);
+    }
+    to {
+      text-shadow: 0 0 10px #85c5c7, 0 0 20px #85c5c7, 0 0 30px #00a8cc;
+      transform: scale(1.05);
+    }
   }
 
   body {
