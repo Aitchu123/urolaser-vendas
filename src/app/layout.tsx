@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${outfit.variable} ${manrope.variable} antialiased font-manrope`}
       >
         <SiteMainHeader />
-        <div className="pt-10">
+        <div className="pt-3">
           {children}
         </div>
       </body>

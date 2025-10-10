@@ -162,6 +162,10 @@ export const SkeletonTwo = () => {
     "/bloco3.png",
   ];
 
+  // Valores fixos para evitar erro de hidratação
+  const firstRowRotations = [-8, 5, -3];
+  const secondRowRotations = [7, -5, 4];
+
   const imageVariants = {
     whileHover: {
       scale: 1.1,
@@ -183,7 +187,7 @@ export const SkeletonTwo = () => {
             variants={imageVariants}
             key={"images-first" + idx}
             style={{
-              rotate: Math.random() * 20 - 10,
+              rotate: firstRowRotations[idx],
             }}
             whileHover="whileHover"
             whileTap="whileTap"
@@ -204,7 +208,7 @@ export const SkeletonTwo = () => {
           <motion.div
             key={"images-second" + idx}
             style={{
-              rotate: Math.random() * 20 - 10,
+              rotate: secondRowRotations[idx],
             }}
             variants={imageVariants}
             whileHover="whileHover"

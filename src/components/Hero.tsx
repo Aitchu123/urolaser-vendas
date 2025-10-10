@@ -18,8 +18,8 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { CirclePlay, Star, Users, Shield, Zap, TrendingUp, CheckCircle, Stethoscope } from "lucide-react";
-import { useRef } from "react";
+import { CirclePlay, Star, Users, Shield, Zap, TrendingUp, CheckCircle, Stethoscope, Volume2, VolumeX } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { heroData } from "@/constants";
 import { HeroVideoDialog } from "@/components/ui/hero-video-dialog";
@@ -65,6 +65,10 @@ const imageVariants: Variants = {
 
 const Hero = () => {
   const heroImageRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [showSoundButton, setShowSoundButton] = useState(true);
 
   const { scrollYProgress } = useScroll({
     target: heroImageRef,
@@ -87,20 +91,36 @@ const Hero = () => {
     }
   };
 
+  const handleSoundToggle = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      // Controla o som do YouTube via postMessage
+      if (isMuted) {
+        iframeRef.current.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+      } else {
+        iframeRef.current.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+      }
+    }
+    setIsMuted(!isMuted);
+    setShowSoundButton(false);
+  };
+
+  // Removido o useEffect que escondia o botão automaticamente
+  // O botão agora só desaparece quando clicado
+
   // Função removida pois o botão agora redireciona para o WhatsApp
 
   return (
-    <div className="py-20 md:py-32 min-h-screen overflow-hidden relative flex justify-center items-center">
+    <div className="py-12 sm:py-16 md:py-20 lg:py-32 min-h-screen overflow-hidden relative flex justify-center items-center px-4 sm:px-6">
       <motion.div
         variants={heroVariant}
         initial="hidden"
         animate="visible"
-        className="container text-center relative z-10"
+        className="container text-center relative z-10 max-w-7xl mx-auto"
       >
-        <div className="max-w-screen-md mx-auto">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             variants={heroChildVariants}
-            className="text-sm uppercase tracking-wider bg-[#85c5c7]/10 max-w-max mx-auto px-4 py-2 rounded-full border border-[#85c5c7]/20 backdrop-blur-3xl mb-6 md:mb-10"
+            className="text-xs sm:text-sm uppercase tracking-wider bg-[#85c5c7]/10 max-w-max mx-auto px-3 sm:px-4 py-2 rounded-full border border-[#85c5c7]/20 backdrop-blur-3xl mb-4 sm:mb-6 md:mb-10"
           >
             <AnimatedShinyText className="font-semibold text-[#85c5c7]" shimmerWidth={150}>
               🏥 Curso #1 em Representação Hospitalar
@@ -109,7 +129,7 @@ const Hero = () => {
 
           <motion.h2
             variants={heroChildVariants}
-            className="text-4xl font-semibold !leading-tight mb-4 md-text-5xl md:mb-5 lg:text-6xl"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold !leading-tight mb-4 md:mb-5 px-2"
           >
             Ganhe até{" "}
             <AuroraText
@@ -120,7 +140,7 @@ const Hero = () => {
               R$7.000
             </AuroraText>
             <motion.span
-              className="relative isolate ms-4 inline-block"
+              className="relative isolate ms-2 sm:ms-4 inline-block"
               initial={{ rotate: -5 }}
               animate={{ rotate: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
@@ -132,7 +152,7 @@ const Hero = () => {
                 className="font-black"
               />
               <motion.span
-                className="absolute -z-10 top-2 -left-6 -right-4 bottom-0.5 bg-gradient-to-r from-[#85c5c7]/40 to-[#00a8cc]/30 rounded-full px-8 ms-3 border-t border-[#85c5c7]/30 shadow-[inset_0px_0px_30px_0px] shadow-[#85c5c7]/30 md:top-3 md:bottom-1 lg:top-4 lg:bottom-2"
+                className="absolute -z-10 top-1 sm:top-2 md:top-3 lg:top-4 -left-3 sm:-left-6 -right-2 sm:-right-4 bottom-0.5 sm:bottom-0.5 md:bottom-1 lg:bottom-2 bg-gradient-to-r from-[#85c5c7]/40 to-[#00a8cc]/30 rounded-full px-4 sm:px-8 ms-1 sm:ms-3 border-t border-[#85c5c7]/30 shadow-[inset_0px_0px_30px_0px] shadow-[#85c5c7]/30"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.5, delay: 1 }}
@@ -142,15 +162,15 @@ const Hero = () => {
 
           <motion.p
             variants={heroChildVariants}
-            className="text-gray-600 md:text-xl mb-6 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-6 leading-relaxed px-4 max-w-3xl mx-auto"
           >
-            <strong className="text-[#85c5c7] text-xl md:text-2xl">Transforme sua vida em 8 semanas!</strong> Acompanhe cirurgias de alta tecnologia e garanta um salário de <strong className="text-gray-900">R$3.500 a R$7.000</strong> sem precisar de faculdade. Curso com <strong className="text-[#85c5c7]">garantia de primeira colocação</strong> e suporte na conquista do seu primeiro emprego.
+            <strong className="text-[#85c5c7] text-base sm:text-lg md:text-xl lg:text-2xl">Transforme sua vida em 8 semanas!</strong> Acompanhe cirurgias de alta tecnologia e garanta um salário de <strong className="text-gray-900">R$3.500 a R$7.000</strong> sem precisar de faculdade. Curso com <strong className="text-[#85c5c7]">garantia de primeira colocação</strong> e suporte na conquista do seu primeiro emprego.
           </motion.p>
 
           {/* Prova Social com Animated Tooltip */}
           <motion.div
             variants={heroChildVariants}
-            className="flex items-center justify-center gap-3 mb-8"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 sm:mb-8 px-4"
           >
             <div className="flex -space-x-2">
               <AnimatedTooltip
@@ -188,8 +208,8 @@ const Hero = () => {
                 ]}
               />
             </div>
-            <div className="h-3.5 w-[0.85px] bg-gray-300"></div>
-            <span className="font-medium text-gray-600 text-sm leading-tight sm:text-base">
+            <div className="hidden sm:block h-3.5 w-[0.85px] bg-gray-300"></div>
+            <span className="font-medium text-gray-600 text-xs sm:text-sm leading-tight text-center">
               Mais de 20.100 aluno já se especializaram
             </span>
           </motion.div>
@@ -197,30 +217,30 @@ const Hero = () => {
           {/* Features com ícones */}
           <motion.div
             variants={heroChildVariants}
-            className="flex flex-wrap justify-center gap-4 mb-8 md:gap-6"
+            className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-4"
           >
-            <div className="flex items-center space-x-2 bg-green-500/10 text-green-600 px-4 py-2 rounded-full border border-green-500/20">
-              <Shield className="w-5 h-5" />
-              <span className="text-sm font-medium">Certificação Reconhecida</span>
+            <div className="flex items-center justify-center space-x-2 bg-green-500/10 text-green-600 px-3 sm:px-4 py-2 rounded-full border border-green-500/20">
+              <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-xs sm:text-sm font-medium">Certificação Reconhecida</span>
             </div>
-            <div className="flex items-center space-x-2 bg-[#85c5c7]/10 text-[#85c5c7] px-4 py-2 rounded-full border border-[#85c5c7]/20">
-              <Stethoscope className="w-5 h-5" />
-              <span className="text-sm font-medium">Aulas Práticas</span>
+            <div className="flex items-center justify-center space-x-2 bg-[#85c5c7]/10 text-[#85c5c7] px-3 sm:px-4 py-2 rounded-full border border-[#85c5c7]/20">
+              <Stethoscope className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-xs sm:text-sm font-medium">Aulas Práticas</span>
             </div>
-            <div className="flex items-center space-x-2 bg-blue-500/10 text-blue-600 px-4 py-2 rounded-full border border-blue-500/20">
-              <CheckCircle className="w-5 h-5" />
-              <span className="text-sm font-medium">Suporte Especializado</span>
+            <div className="flex items-center justify-center space-x-2 bg-blue-500/10 text-blue-600 px-3 sm:px-4 py-2 rounded-full border border-blue-500/20">
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-xs sm:text-sm font-medium">Suporte Especializado</span>
             </div>
           </motion.div>
 
           <motion.div
             variants={heroChildVariants}
-            className="flex flex-col sm:flex-row justify-center gap-4 mt-6 md:mt-10"
+            className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-6 md:mt-10 px-4"
           >
             <Button
               onClick={handleEnrollClick}
               size="lg"
-              className="text-lg px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="text-base sm:text-lg px-6 sm:px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
             >
               Inscrever-se Agora
             </Button>
@@ -228,13 +248,14 @@ const Hero = () => {
               href="https://wa.me/5512991246207"
               target="_blank"
               rel="noopener noreferrer"
+              className="w-full sm:w-auto"
             >
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-8 py-3"
+                className="text-base sm:text-lg px-6 sm:px-8 py-3 w-full"
               >
-                <CirclePlay className="mr-2" />
+                <CirclePlay className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
                 Aula Gratuita
               </Button>
             </a>
@@ -243,7 +264,7 @@ const Hero = () => {
 
         <motion.div
           variants={imageVariants}
-          className="relative mt-12 max-w-screen-xl mx-auto isolate rounded-xl md:mt-16 px-4 sm:px-6"
+          className="relative mt-8 sm:mt-12 max-w-screen-xl mx-auto isolate rounded-xl md:mt-16 px-4 sm:px-6"
         >
           <motion.div
             initial={{
@@ -265,15 +286,81 @@ const Hero = () => {
             style={{ scale }}
             className="w-full"
           >
-            <div className="w-full rounded-xl shadow-2xl overflow-hidden border-4 border-[#00a8cc]/30">
+            <div className="w-full rounded-lg sm:rounded-xl shadow-2xl overflow-hidden border-2 sm:border-4 border-[#00a8cc]/30 relative">
               <iframe
-                src="https://www.youtube.com/embed/vj6naEytGu8?autoplay=1&mute=1&loop=1&playlist=vj6naEytGu8&controls=0&showinfo=0&rel=0"
-                title="Tecnologia Urolaser - Vídeo demonstrativo"
-                className="w-full aspect-video md:aspect-[16/9] lg:aspect-[16/9]"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                ref={iframeRef}
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/VJlRN6PNWiI?start=5&autoplay=1&mute=1&loop=1&playlist=VJlRN6PNWiI&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&enablejsapi=1"
+                title="Urolaser Video"
                 frameBorder="0"
-              />
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full aspect-video"
+                style={{ minHeight: '400px' }}
+              ></iframe>
+
+              {/* Botão de Som Piscante */}
+              {showSoundButton && (
+                <motion.button
+                  onClick={handleSoundToggle}
+                  className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm z-10"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div
+                    className="bg-[#00a8cc] hover:bg-[#85c5c7] text-white rounded-full p-6 sm:p-8 shadow-2xl"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      boxShadow: [
+                        "0 0 20px rgba(0, 168, 204, 0.5)",
+                        "0 0 40px rgba(0, 168, 204, 0.8)",
+                        "0 0 20px rgba(0, 168, 204, 0.5)"
+                      ]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    {isMuted ? (
+                      <VolumeX className="w-12 h-12 sm:w-16 sm:h-16" />
+                    ) : (
+                      <Volume2 className="w-12 h-12 sm:w-16 sm:h-16" />
+                    )}
+                  </motion.div>
+                  <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-white text-center">
+                    <p className="text-sm sm:text-base font-semibold mb-1">
+                      {isMuted ? "Clique para ativar o som" : "Som ativado!"}
+                    </p>
+                    <p className="text-xs sm:text-sm opacity-80">
+                      Assista com áudio para melhor experiência
+                    </p>
+                  </div>
+                </motion.button>
+              )}
+
+              {/* Controle de som discreto no canto */}
+              {!showSoundButton && (
+                <motion.button
+                  onClick={() => setIsMuted(!isMuted)}
+                  className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 z-10 transition-all duration-300"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  {isMuted ? (
+                    <VolumeX className="w-5 h-5" />
+                  ) : (
+                    <Volume2 className="w-5 h-5" />
+                  )}
+                </motion.button>
+              )}
             </div>
           </motion.div>
 

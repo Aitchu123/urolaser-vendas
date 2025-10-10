@@ -71,7 +71,7 @@ export default function WhatsAppButton({
             damping: 20,
             duration: 0.6
           }}
-          className={`fixed bottom-36 right-6 z-50 ${className}`}
+          className={`fixed bottom-20 sm:bottom-36 right-4 sm:right-6 z-50 ${className}`}
         >
           {/* Botão Principal */}
           <motion.div
@@ -95,14 +95,14 @@ export default function WhatsAppButton({
             {/* Botão WhatsApp */}
             <motion.button
               onClick={handleWhatsAppClick}
-              className="relative w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+              className="relative w-12 h-12 sm:w-16 sm:h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
               whileHover={{
                 boxShadow: "0 20px 25px -5px rgba(34, 197, 94, 0.4), 0 10px 10px -5px rgba(34, 197, 94, 0.04)"
               }}
             >
               {/* Logo do WhatsApp SVG */}
               <svg
-                className="w-8 h-8 text-white"
+                className="w-6 h-6 sm:w-8 sm:h-8 text-white"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -123,7 +123,7 @@ export default function WhatsAppButton({
               initial={{ opacity: 0, x: 20, scale: 0.8 }}
               whileHover={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="absolute right-20 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg pointer-events-none"
+              className="absolute right-16 sm:right-20 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm whitespace-nowrap shadow-lg pointer-events-none hidden sm:block"
             >
               Fale conosco no WhatsApp!
               <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
@@ -141,7 +141,7 @@ export default function WhatsAppButton({
               repeat: Infinity,
               repeatDelay: 3
             }}
-            className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-lg"
+            className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-lg"
           >
             !
           </motion.div>

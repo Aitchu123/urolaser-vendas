@@ -26,7 +26,7 @@ export const trackCTAClick = (
   // Aqui você pode implementar a integração com Google Analytics, Facebook Pixel, etc.
   // Exemplo para Google Analytics 4
   if (typeof window !== 'undefined' && 'gtag' in window) {
-    // @ts-ignore
+    // @ts-expect-error - gtag is a global function from Google Analytics
     window.gtag('event', 'cta_click', {
       event_category: source,
       event_label: action,
@@ -36,7 +36,7 @@ export const trackCTAClick = (
 
   // Exemplo para Facebook Pixel
   if (typeof window !== 'undefined' && 'fbq' in window) {
-    // @ts-ignore
+    // @ts-expect-error - fbq is a global function from Facebook Pixel
     window.fbq('track', 'Lead', {
       content_name: `${source}_${action}`,
       ...utmParams

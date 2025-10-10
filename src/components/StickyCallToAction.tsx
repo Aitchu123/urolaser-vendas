@@ -173,7 +173,7 @@ export default function StickyCallToAction({
           animate="visible"
           exit="exit"
           className={`
-              fixed ${position === 'bottom' ? 'bottom-0' : 'top-0'} left-0 right-0 z-50
+              fixed ${position === 'bottom' ? 'bottom-0' : 'top-0'} left-0 right-0 z-40
               bg-gradient-to-r from-[#00a8cc] via-[#85c5c7] to-[#00a8cc]
               border-t-2 border-gradient-to-r from-[#00a8cc]  via-[#0180b3] to-[#17ddf9]
               shadow-2xl backdrop-blur-lg

@@ -154,19 +154,19 @@ const EnrollmentForm = () => {
   }
 
   return (
-    <section id="enrollment" className="py-16 md:py-24 bg-gradient-to-br from-[#85c5c7]/10 to-white">
-      <div className="container mx-auto px-4">
+    <section id="enrollment" className="py-12 sm:py-16 md:py-24 bg-gradient-to-br from-[#85c5c7]/10 to-white">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Inscreva-se no Curso
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Preencha o formulário abaixo e garante sua vaga no curso mais completo 
             de tecnologia Urolaser do Brasil.
           </p>
@@ -179,13 +179,13 @@ const EnrollmentForm = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-100">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl border border-gray-100">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {/* Nome */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    <User className="inline w-4 h-4 mr-2" />
+                    <User className="inline w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                     Nome Completo *
                   </label>
                   <Input
@@ -205,7 +205,7 @@ const EnrollmentForm = () => {
                 {/* Email */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    <Mail className="inline w-4 h-4 mr-2" />
+                    <Mail className="inline w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                     Email *
                   </label>
                   <Input
@@ -225,7 +225,7 @@ const EnrollmentForm = () => {
                 {/* Telefone */}
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    <Phone className="inline w-4 h-4 mr-2" />
+                    <Phone className="inline w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                     Telefone *
                   </label>
                   <Input
@@ -245,7 +245,7 @@ const EnrollmentForm = () => {
                 {/* Cidade */}
                 <div>
                   <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
-                    <MapPin className="inline w-4 h-4 mr-2" />
+                    <MapPin className="inline w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                     Cidade *
                   </label>
                   <Input
@@ -265,7 +265,7 @@ const EnrollmentForm = () => {
                 {/* Profissão */}
                 <div>
                   <label htmlFor="profession" className="block text-sm font-medium text-gray-700 mb-2">
-                    <Stethoscope className="inline w-4 h-4 mr-2" />
+                    <Stethoscope className="inline w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                     Profissão *
                   </label>
                   <Input
@@ -318,16 +318,16 @@ const EnrollmentForm = () => {
               </div>
 
               {/* Submit Button */}
-              <div className="text-center pt-6">
+              <div className="text-center pt-4 sm:pt-6">
                 <Button
                   type="submit"
                   disabled={isSubmitting}
                   size="lg"
-                  className="w-full md:w-auto px-12 py-4 text-lg"
+                  className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      <Loader2 className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
                       Enviando inscrição...
                     </>
                   ) : (
@@ -336,7 +336,7 @@ const EnrollmentForm = () => {
                 </Button>
               </div>
 
-              <p className="text-sm text-gray-500 text-center mt-4">
+              <p className="text-xs sm:text-sm text-gray-500 text-center mt-4 px-4">
                 * Campos obrigatórios. Seus dados estão seguros e não serão compartilhados.
               </p>
             </form>

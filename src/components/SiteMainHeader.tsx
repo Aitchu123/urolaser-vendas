@@ -95,7 +95,7 @@ export const SiteMainHeader = () => {
                 containerClassName="rounded-full shadow-lg hover:shadow-xl"
                 className="bg-[#00a8cc] dark:bg-[#00a8cc] text-white flex items-center gap-2"
                 duration={1.5}
-                {...({ href: '/auth' } as any)}
+                href="/auth"
               >
                 <span className="font-semibold">Entrar</span>
                 <motion.div
@@ -144,7 +144,7 @@ export const SiteMainHeader = () => {
                 className="bg-[#00a8cc] dark:bg-[#00a8cc] flex items-center justify-center gap-2 w-full"
                 duration={1.5}
                 onClick={() => setOpen(false)}
-                {...({ href: '/auth' } as any)}
+                href="/auth"
               >
                 <span className="font-medium text-[#00a8cc] dark:text-white">
                   Entrar na Urolaser

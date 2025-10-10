@@ -67,7 +67,6 @@ const cardVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      type: "spring",
       stiffness: 260,
       damping: 20
     }
@@ -76,7 +75,6 @@ const cardVariants = {
     scale: 1.05,
     boxShadow: "0 10px 25px rgb(232, 78, 60, 0.2)",
     transition: {
-      type: "spring",
       stiffness: 400,
       damping: 10
     }
@@ -92,7 +90,6 @@ const iconVariants = {
     scale: 1,
     rotate: 0,
     transition: {
-      type: "spring",
       stiffness: 260,
       damping: 20
     }
@@ -101,7 +98,6 @@ const iconVariants = {
     rotate: 15,
     scale: 1.2,
     transition: {
-      type: "spring",
       stiffness: 500,
       damping: 10
     }
@@ -120,19 +116,19 @@ const glowVariants = {
 
 export default function Dor() {
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-12 sm:py-16 bg-gradient-to-b from-white to-slate-50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Você está <span className="text-[#e84e3c]">CANSADO</span> de:
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Reconhece algum desses problemas na sua carreira?
           </p>
         </motion.div>
@@ -142,7 +138,7 @@ export default function Dor() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {painPoints.map((point) => (
             <motion.div
@@ -150,7 +146,7 @@ export default function Dor() {
               variants={cardVariants}
               whileHover="hover"
               whileTap="tap"
-              className="relative bg-white rounded-xl p-6 border border-gray-100 overflow-hidden"
+              className="relative bg-white rounded-xl p-4 sm:p-6 border border-gray-100 overflow-hidden"
               style={{
                 transformStyle: "preserve-3d",
                 perspective: "1000px"
@@ -206,13 +202,13 @@ export default function Dor() {
               <div className="relative z-10">
                 <motion.div
                   variants={iconVariants}
-                  className="w-14 h-14 bg-[#e84e3c]/10 rounded-full flex items-center justify-center mb-4 text-[#e84e3c]"
+                  className="w-12 h-12 sm:w-14 sm:h-14 bg-[#e84e3c]/10 rounded-full flex items-center justify-center mb-3 sm:mb-4 text-[#e84e3c]"
                 >
                   {point.icon}
                 </motion.div>
 
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{point.title}</h3>
-                <p className="text-gray-600">{point.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{point.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600">{point.description}</p>
               </div>
 
               {/* Efeito de brilho animado */}
@@ -230,9 +226,9 @@ export default function Dor() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-8 sm:mt-12"
         >
-          <p className="text-xl font-semibold text-[#e84e3c]">
+          <p className="text-lg sm:text-xl font-semibold text-[#e84e3c]">
             A Urolaser tem a solução para transformar sua carreira em apenas 8 semanas!
           </p>
         </motion.div>
@@ -243,10 +239,10 @@ export default function Dor() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16"
         >
-          <p className="text-base leading-6 mb-4">
-            É hora de <span className="text-[#00a8cc] text-2xl leading-8 font-bold">MUDAR ESSA HISTÓRIA</span> 👇
+          <p className="text-sm sm:text-base leading-6 mb-4">
+            É hora de <span className="text-[#00a8cc] text-xl sm:text-2xl leading-8 font-bold">MUDAR ESSA HISTÓRIA</span> 👇
           </p>
         </motion.div>
       </div>

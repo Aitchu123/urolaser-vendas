@@ -8,6 +8,9 @@
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import Benefits from "@/components/Benefits";
+import Bonuses from "@/components/Bonuses";
+import FAQ from "@/components/FAQ";
+import { Footer } from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import EnrollmentForm from "@/components/EnrollmentForm";
 import StickyCallToAction, { useStickyCallToAction } from "@/components/StickyCallToAction";
@@ -15,6 +18,7 @@ import InstitutionsScroll from "@/components/InstitutionsScroll";
 import Dor from "@/components/Dor";
 import FeaturesSectionDemo from "@/components/features-section-demo-3";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { FinalCTA } from "@/components/FinalCTA";
 
 export default function Home() {
   const { isVisible, handleDismiss } = useStickyCallToAction();
@@ -28,9 +32,13 @@ export default function Home() {
       <Features />
       <Benefits />
       <Testimonials />
+      <Bonuses />
       <EnrollmentForm />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
       <StickyCallToAction
-        isVisible={isVisible}
+        propIsVisible={isVisible}
         onDismiss={handleDismiss}
         position="bottom"
       />
