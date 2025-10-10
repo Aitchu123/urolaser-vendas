@@ -9,32 +9,59 @@ import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { testimonials } from "@/constants";
 import Image from "next/image";
+import { Marquee } from "@/components/ui/marquee";
 
 const Testimonials = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
+  // Componente para um card de depoimento otimizado para carrossel vertical
+  const TestimonialCard = ({ testimonial }: { testimonial: any }) => (
+    <div className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#85c5c7]/30 w-full max-w-sm mx-auto mb-4 flex-shrink-0">
+      {/* Quote icon */}
+      <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+        <Quote className="w-8 h-8 text-[#85c5c7]" />
+      </div>
 
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
+      {/* Stars */}
+      <div className="flex items-center mb-3">
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            className="w-4 h-4 text-yellow-400 fill-current"
+          />
+        ))}
+      </div>
+
+      {/* Testimonial content */}
+      <blockquote className="text-gray-700 mb-4 leading-relaxed relative z-10 text-sm">
+        "{testimonial.content}"
+      </blockquote>
+
+      {/* Author info */}
+      <div className="flex items-center">
+        <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3">
+          <Image
+            src={testimonial.image}
+            alt={testimonial.name}
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div>
+          <div className="font-semibold text-gray-900 text-sm">
+            {testimonial.name}
+          </div>
+          <div className="text-xs text-gray-600">
+            {testimonial.role}
+          </div>
+        </div>
+      </div>
+
+      {/* Hover effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#85c5c7]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    </div>
+  );
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -51,64 +78,35 @@ const Testimonials = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              variants={itemVariants}
-              className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#85c5c7]/30"
-            >
-              {/* Quote icon */}
-              <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                <Quote className="w-12 h-12 text-[#85c5c7]" />
-              </div>
+        {/* Carrossel infinito vertical com múltiplas colunas */}
+        <div className="flex gap-6 h-[600px] overflow-hidden">
+          {/* Primeira coluna - direção normal */}
+          <div className="flex-1">
+            <Marquee vertical pauseOnHover className="[--duration:30s] h-full">
+              {testimonials.slice(0, 4).map((testimonial, index) => (
+                <TestimonialCard key={index} testimonial={testimonial} />
+              ))}
+            </Marquee>
+          </div>
 
-              {/* Stars */}
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-5 h-5 text-yellow-400 fill-current"
-                  />
-                ))}
-              </div>
+          {/* Segunda coluna - direção reversa */}
+          <div className="flex-1">
+            <Marquee vertical reverse pauseOnHover className="[--duration:25s] h-full">
+              {testimonials.slice(2, 6).map((testimonial, index) => (
+                <TestimonialCard key={index} testimonial={testimonial} />
+              ))}
+            </Marquee>
+          </div>
 
-              {/* Testimonial content */}
-              <blockquote className="text-gray-700 mb-6 leading-relaxed relative z-10">
-                "{testimonial.content}"
-              </blockquote>
-
-              {/* Author info */}
-              <div className="flex items-center">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    {testimonial.role}
-                  </div>
-                </div>
-              </div>
-
-              {/* Hover effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#85c5c7]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </motion.div>
-          ))}
-        </motion.div>
+          {/* Terceira coluna - direção normal, velocidade diferente */}
+          <div className="flex-1">
+            <Marquee vertical pauseOnHover className="[--duration:35s] h-full">
+              {testimonials.slice(1, 5).map((testimonial, index) => (
+                <TestimonialCard key={index} testimonial={testimonial} />
+              ))}
+            </Marquee>
+          </div>
+        </div>
 
         {/* Call to action */}
         <motion.div

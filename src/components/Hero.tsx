@@ -115,7 +115,7 @@ const Hero = () => {
             <AuroraText
               colors={["#00a8cc", "#85c5c7", "#d1d1d1", "#00a8cc", "#85c5c7", "#ffffff"]}
               speed={2.5}
-              className="drop-shadow-lg animate-glow font-extrabold"
+              className="drop-shadow-lg font-extrabold"
             >
               R$7.000
             </AuroraText>

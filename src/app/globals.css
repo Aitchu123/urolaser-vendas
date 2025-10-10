@@ -72,24 +72,82 @@
       background-position: calc(100% + var(--shiny-width)) 0;
     }
   }
-  --animate-aurora: aurora 8s ease-in-out infinite alternate
-;
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
   @keyframes aurora {
-  0% {
-    background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);}
-  25% {
-    background-position: 50% 100%;
-    transform: rotate(5deg) scale(1.1);}
-  50% {
-    background-position: 100% 50%;
-    transform: rotate(-3deg) scale(0.95);}
-  75% {
-    background-position: 50% 0%;
-    transform: rotate(3deg) scale(1.05);}
-  100% {
-    background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);}}}
+    0% {
+      background-position: 0% 50%;
+      transform: rotate(-5deg) scale(0.9);
+    }
+    25% {
+      background-position: 50% 100%;
+      transform: rotate(5deg) scale(1.1);
+    }
+    50% {
+      background-position: 100% 50%;
+      transform: rotate(-3deg) scale(0.95);
+    }
+    75% {
+      background-position: 50% 0%;
+      transform: rotate(3deg) scale(1.05);
+    }
+    100% {
+      background-position: 0% 50%;
+      transform: rotate(-5deg) scale(0.9);
+    }
+  }
+  
+  /* Variáveis de animação do Tailwind */
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 5px #85c5c7, 0 0 10px #85c5c7, 0 0 15px #85c5c7;
+      transform: scale(1);
+    }
+    100% {
+      text-shadow: 0 0 10px #00a8cc, 0 0 20px #00a8cc, 0 0 30px #00a8cc;
+      transform: scale(1.02);
+    }
+  }
+
+  /* Animações de carrossel infinito */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -275,17 +333,6 @@ html {
   /* Animação personalizada para texto chamativo */
   .animate-glow {
     animation: glow 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 5px #00a8cc, 0 0 10px #00a8cc, 0 0 15px #85c5c7;
-      transform: scale(1);
-    }
-    to {
-      text-shadow: 0 0 10px #85c5c7, 0 0 20px #85c5c7, 0 0 30px #00a8cc;
-      transform: scale(1.05);
-    }
   }
 
   body {
