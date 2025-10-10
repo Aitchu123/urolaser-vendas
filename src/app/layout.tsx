@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Outfit } from "next/font/google";
 import "./globals.css";
+import { SiteMainHeader } from "@/components/SiteMainHeader";
 
 // Fonte Outfit para títulos (substituindo Clash Display)
 const outfit = Outfit({
@@ -31,7 +32,10 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${manrope.variable} antialiased font-manrope`}
       >
-        {children}
+        <SiteMainHeader />
+        <div className="pt-12">
+          {children}
+        </div>
       </body>
     </html>
   );
