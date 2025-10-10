@@ -8,7 +8,8 @@ WORKDIR /app
 
 # Copiar arquivos de dependências
 COPY package.json package-lock.json* ./
-RUN npm ci --only=production
+# Instalar todas as dependências (incluindo devDependencies para o build)
+RUN npm ci
 
 # Stage 2: Builder
 FROM node:18-alpine AS builder
@@ -19,8 +20,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Definir variáveis de ambiente para build
-ENV NEXT_TELEMETRY_DISABLED 1
-ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
 
 # Build da aplicação
 RUN npm run build
@@ -42,10 +43,10 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # Definir variáveis de ambiente
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
 
 # Expor porta
 EXPOSE 3000
