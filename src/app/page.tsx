@@ -12,6 +12,7 @@ import Testimonials from "@/components/Testimonials";
 import EnrollmentForm from "@/components/EnrollmentForm";
 import StickyCallToAction, { useStickyCallToAction } from "@/components/StickyCallToAction";
 import InstitutionsScroll from "@/components/InstitutionsScroll";
+import Dor from "@/components/Dor";
 
 export default function Home() {
   const { isVisible, handleDismiss } = useStickyCallToAction();
@@ -20,11 +21,12 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Hero />
       <InstitutionsScroll />
+      <Dor />
       <Features />
       <Benefits />
       <Testimonials />
       <EnrollmentForm />
-      <StickyCallToAction 
+      <StickyCallToAction
         isVisible={isVisible}
         onDismiss={handleDismiss}
         position="bottom"

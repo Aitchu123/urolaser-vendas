@@ -63,7 +63,7 @@ const imageVariants: Variants = {
 };
 
 const Hero = () => {
-  const heroImageRef = useRef<HTMLElement>(null);
+  const heroImageRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: heroImageRef,
@@ -89,12 +89,12 @@ const Hero = () => {
   // Função removida pois o botão agora redireciona para o WhatsApp
 
   return (
-    <section className="py-10 md:py-16 overflow-hidden relative bg-gradient-to-br from-slate-50 to-white flex justify-center items-center">
+    <div className="py-20 md:py-32 min-h-screen overflow-hidden relative flex justify-center items-center">
       <motion.div
         variants={heroVariant}
         initial="hidden"
         animate="visible"
-        className="container text-center"
+        className="container text-center relative z-10"
       >
         <div className="max-w-screen-md mx-auto">
           <motion.div
@@ -122,7 +122,7 @@ const Hero = () => {
             >
               <LayoutTextFlip
                 text=""
-                words={["Sem Faculdade", "Com Urolaser"]}
+                words={["Sem Faculdade", "Com a Urolaser"]}
                 duration={3000}
                 className="font-black"
               />
@@ -311,10 +311,9 @@ const Hero = () => {
           ></motion.div>
         </motion.div>
 
-        {/* Gradiente de desvanecimento */}
-        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+        {/* Removendo o gradiente de desvanecimento que estava cobrindo o conteúdo */}
       </motion.div>
-    </section>
+    </div>
   );
 };
 
