@@ -90,21 +90,21 @@ export const SiteMainHeader = () => {
           {/* CTA Button */}
           <div className="relative z-20 flex items-center">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <HoverBorderGradient
-                as={Link}
-                containerClassName="rounded-full shadow-lg hover:shadow-xl"
-                className="bg-[#00a8cc] dark:bg-[#00a8cc] text-white flex items-center gap-2"
-                duration={1.5}
-                href="/auth"
-              >
-                <span className="font-semibold">Entrar</span>
-                <motion.div
-                  animate={{ x: [0, 3, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+              <Link href="/auth">
+                <HoverBorderGradient
+                  containerClassName="rounded-full shadow-lg hover:shadow-xl"
+                  className="bg-[#00a8cc] dark:bg-[#00a8cc] text-white flex items-center gap-2"
+                  duration={1.5}
                 >
-                  <ArrowUpRightIcon className="w-4 h-4" />
-                </motion.div>
-              </HoverBorderGradient>
+                  <span className="font-semibold">Entrar</span>
+                  <motion.div
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <ArrowUpRightIcon className="w-4 h-4" />
+                  </motion.div>
+                </HoverBorderGradient>
+              </Link>
             </motion.div>
           </div>
         </NavBody>
@@ -138,19 +138,19 @@ export const SiteMainHeader = () => {
             })}
 
             <div className="mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800">
-              <HoverBorderGradient
-                as={Link}
-                containerClassName="w-full rounded-md shadow-lg hover:shadow-xl"
-                className="bg-[#00a8cc] dark:bg-[#00a8cc] flex items-center justify-center gap-2 w-full"
-                duration={1.5}
-                onClick={() => setOpen(false)}
-                href="/auth"
-              >
-                <span className="font-medium text-[#00a8cc] dark:text-white">
-                  Entrar na Urolaser
-                </span>
-                <ArrowUpRightIcon className="w-4 h-4" />
-              </HoverBorderGradient>
+              <Link href="/auth">
+                <HoverBorderGradient
+                  containerClassName="w-full rounded-md shadow-lg hover:shadow-xl"
+                  className="bg-[#00a8cc] dark:bg-[#00a8cc] flex items-center justify-center gap-2 w-full"
+                  duration={1.5}
+                  onClick={() => setOpen(false)}
+                >
+                  <span className="font-medium text-[#00a8cc] dark:text-white">
+                    Entrar na Urolaser
+                  </span>
+                  <ArrowUpRightIcon className="w-4 h-4" />
+                </HoverBorderGradient>
+              </Link>
             </div>
           </MobileNavMenu>
         </MobileNav>

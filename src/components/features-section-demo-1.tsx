@@ -87,9 +87,9 @@ export const Grid = ({
         <GridPattern
           width={size ?? 20}
           height={size ?? 20}
-          x="-12"
-          y="4"
-          squares={p}
+          x={-12}
+          y={4}
+          squares={p as [number, number][]}
           className="absolute inset-0 h-full w-full  mix-blend-overlay dark:fill-white/10 dark:stroke-white/10 stroke-black/10 fill-black/10"
         />
       </div>

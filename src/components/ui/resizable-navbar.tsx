@@ -13,7 +13,7 @@ export const Navbar = ({
 }: {
   children: ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <nav
@@ -36,7 +36,7 @@ export const NavBody = ({
 }: {
   children: ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <div
@@ -59,7 +59,7 @@ export const NavbarLogo = ({
 }: {
   children: ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <div
@@ -79,7 +79,7 @@ export const NavItems = ({
 }: {
   items: { name: string; link: string }[];
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <div
@@ -110,7 +110,7 @@ export const MobileNav = ({
 }: {
   children: ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <div
@@ -130,7 +130,7 @@ export const MobileNavHeader = ({
 }: {
   children: ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <div
@@ -155,7 +155,7 @@ export const MobileNavToggle = ({
   isOpen: boolean;
   onClick: () => void;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <button
@@ -213,7 +213,7 @@ export const MobileNavMenu = ({
   onClose: () => void;
   children: ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <AnimatePresence>
