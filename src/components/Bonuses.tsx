@@ -7,7 +7,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Gift, FileText, Table, Mail, Users } from "lucide-react";
+import { Gift, FileText, Table, Mail, Users, Cpu } from "lucide-react";
 
 // Componente Card simples inline
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -25,21 +25,21 @@ const CardContent = ({ children, className = "" }: { children: React.ReactNode; 
 export const Bonuses = () => {
   const bonuses = [
     {
-      icon: FileText,
-      title: "Script de Abordagem Campeão",
-      description: "Frases e perguntas poderosas testadas por milhares de representantes para quebrar objeções e fechar mais vendas",
+      icon: Users,
+      title: "Supervisor de Empresa",
+      description: "Supervisor de Empresa, pode atuar em qualquer empresa, loja ou até mesmo fábrica ",
       value: "497",
     },
     {
-      icon: Table,
-      title: "Planilha de Gestão de Carteira",
-      description: "Sistema completo em Excel para organizar seus clientes, acompanhar negociações e nunca perder follow-up",
+      icon: Cpu,
+      title: "Especialização em Digital",
+      description: "Especialidade em Flexível Digital e Geradora digital",
       value: "297",
     },
     {
-      icon: Mail,
-      title: "30 Templates de Email",
-      description: "Modelos prontos para primeiro contato, follow-up, proposta comercial e pós-venda. Basta personalizar!",
+      icon: FileText,
+      title: "Como montar currículo profissional",
+      description: "Montar um currículo profissional é essencial para se destacar na área da saúde. Nesse curso, você aprenderá como criar um currículo que impressionará recrutadores e potenciais clientes.",
       value: "197",
     },
     {

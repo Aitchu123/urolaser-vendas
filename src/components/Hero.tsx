@@ -110,7 +110,7 @@ const Hero = () => {
   // Função removida pois o botão agora redireciona para o WhatsApp
 
   return (
-    <div className="py-12 sm:py-16 md:py-20 lg:py-32 min-h-screen overflow-hidden relative flex justify-center items-center px-4 sm:px-6">
+    <div className="pt-4 pb-8 sm:pt-6 sm:pb-12 md:pt-8 md:pb-16 lg:pt-12 lg:pb-20 min-h-screen overflow-hidden relative flex justify-center items-center px-4 sm:px-6">
       <motion.div
         variants={heroVariant}
         initial="hidden"

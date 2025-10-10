@@ -198,22 +198,22 @@ export default function StickyCallToAction({
             />
           </div>
 
-          <div className="relative px-4 py-4 sm:px-6 sm:py-5">
-            <div className="flex items-center justify-between max-w-7xl mx-auto">
+          <div className="relative px-2 py-3 sm:px-4 sm:py-4 md:px-6 md:py-5">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between max-w-7xl mx-auto gap-3 sm:gap-0">
               {/* Left Side - Logo e Oferta Rotativa */}
-              <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+              <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 flex-1 min-w-0 w-full sm:w-auto">
                 <motion.div
                   className="flex-shrink-0"
                   variants={pulseVariants}
                   animate="pulse"
                 >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden">
                     <Image
                       src="/logo.png"
                       alt="UroLaser"
-                      width={40}
-                      height={40}
-                      className="object-contain"
+                      width={32}
+                      height={32}
+                      className="object-contain sm:w-10 sm:h-10"
                     />
                   </div>
                 </motion.div>
@@ -226,13 +226,13 @@ export default function StickyCallToAction({
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-lg">{offers[currentOffer].icon}</span>
-                      <span className="text-white font-bold text-sm sm:text-base">
+                    <div className="flex items-center gap-1 sm:gap-2 mb-1 flex-wrap">
+                      <span className="text-sm sm:text-lg">{offers[currentOffer].icon}</span>
+                      <span className="text-white font-bold text-xs sm:text-sm md:text-base leading-tight">
                         {offers[currentOffer].text}
                       </span>
                       <motion.span
-                        className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-xs font-bold px-2 py-0.5 rounded-full"
+                        className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-xs font-bold px-1.5 py-0.5 sm:px-2 rounded-full whitespace-nowrap"
                         animate={{ scale: [1, 1.1, 1] }}
                         transition={{ duration: 1, repeat: Infinity }}
                       >
@@ -241,16 +241,19 @@ export default function StickyCallToAction({
                     </div>
                   </motion.div>
 
-                  <div className="flex items-center space-x-4 text-xs sm:text-sm text-blue-200">
+                  {/* Badges de credibilidade - Ocultos em telas muito pequenas */}
+                  <div className="hidden xs:flex items-center space-x-2 sm:space-x-4 text-xs text-blue-200">
                     <span className="flex items-center space-x-1">
                       <Shield className="w-3 h-3" />
-                      <span>Certificado Reconhecido</span>
+                      <span className="hidden sm:inline">Certificado Reconhecido</span>
+                      <span className="sm:hidden">Certificado</span>
                     </span>
                     <span className="flex items-center space-x-1">
                       <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                      <span>4.9/5 (500+ alunos)</span>
+                      <span className="hidden sm:inline">4.9/5 (500+ alunos)</span>
+                      <span className="sm:hidden">4.9/5</span>
                     </span>
-                    <span className="flex items-center space-x-1">
+                    <span className="hidden sm:flex items-center space-x-1">
                       <GraduationCap className="w-3 h-3" />
                       <span>Aulas Práticas</span>
                     </span>
@@ -259,7 +262,7 @@ export default function StickyCallToAction({
               </div>
 
               {/* Right Side - CTAs Modernos */}
-              <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+              <div className="flex items-center justify-center sm:justify-end space-x-1.5 sm:space-x-2 md:space-x-3 flex-shrink-0 w-full sm:w-auto">
                 {/* Trial Button */}
                 <motion.button
                   variants={buttonVariants}
@@ -267,19 +270,24 @@ export default function StickyCallToAction({
                   whileTap="tap"
                   onClick={() => handleCtaClick('trial')}
                   className="
-                      relative px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-semibold
+                      relative px-2.5 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-3 
+                      text-xs sm:text-sm font-semibold
                       bg-gradient-to-r from-emerald-500 to-teal-500
                       hover:from-emerald-400 hover:to-teal-400
-                      text-white rounded-xl shadow-lg hover:shadow-xl
+                      text-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl
                       border border-emerald-400/30 hover:border-emerald-300/50
                       transition-all duration-300 overflow-hidden
                       focus:outline-none focus:ring-2 focus:ring-emerald-500/50
+                      flex-1 sm:flex-none min-w-0
                     "
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-700" />
-                  <span className="relative flex items-center gap-1">
-                    <Gift className="w-3 h-3 sm:w-4 sm:h-4" />
-                    {trialText}
+                  <span className="relative flex items-center justify-center gap-1">
+                    <Gift className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                    <span className="truncate text-xs sm:text-sm">
+                      <span className="hidden sm:inline">{trialText}</span>
+                      <span className="sm:hidden">Inscrição</span>
+                    </span>
                   </span>
                 </motion.button>
 
@@ -290,13 +298,15 @@ export default function StickyCallToAction({
                   whileTap="tap"
                   onClick={() => handleCtaClick('buy')}
                   className="
-                      relative px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-bold
+                      relative px-3 py-2 sm:px-5 sm:py-2.5 md:px-7 md:py-3 
+                      text-xs sm:text-sm font-bold
                       bg-gradient-to-r from-[#4f47e6] via-blue-600 to-cyan-600
                       hover:from-[#4f47e6]/90 hover:via-blue-500 hover:to-cyan-500
-                      text-white rounded-xl shadow-2xl hover:shadow-[#4f47e6]/25
+                      text-white rounded-lg sm:rounded-xl shadow-2xl hover:shadow-[#4f47e6]/25
                       border-2 border-[#4f47e6]/50 hover:border-[#4f47e6]/70
                       transform transition-all duration-300 overflow-hidden
                       focus:outline-none focus:ring-2 focus:ring-[#4f47e6]/50
+                      flex-1 sm:flex-none min-w-0
                     "
                 >
                   {/* Efeito de brilho animado */}
@@ -306,13 +316,16 @@ export default function StickyCallToAction({
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                   />
 
-                  <span className="relative flex items-center gap-2">
-                    <Stethoscope className="w-3 h-3 sm:w-4 sm:h-4" />
-                    {buyText}
+                  <span className="relative flex items-center justify-center gap-1 sm:gap-2">
+                    <Stethoscope className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                    <span className="truncate text-xs sm:text-sm">
+                      <span className="hidden sm:inline">{buyText}</span>
+                      <span className="sm:hidden">Garantir Vaga</span>
+                    </span>
                   </span>
 
-                  {/* Badge de desconto */}
-                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-xs font-bold px-2 py-0.5 rounded-full transform rotate-12">
+                  {/* Badge de desconto - Ajustado para mobile */}
+                  <div className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-xs font-bold px-1.5 py-0.5 sm:px-2 rounded-full transform rotate-12">
                     30% OFF
                   </div>
                 </motion.button>
@@ -324,9 +337,10 @@ export default function StickyCallToAction({
                     whileTap={{ scale: 0.9 }}
                     onClick={handleDismiss}
                     className="
-                        p-2 text-white/60 hover:text-white/90
+                        p-1.5 sm:p-2 text-white/60 hover:text-white/90
                         hover:bg-white/10 rounded-full transition-all duration-300
                         focus:outline-none focus:ring-2 focus:ring-[#4f47e6]/50
+                        flex-shrink-0
                       "
                     aria-label="Fechar"
                   >

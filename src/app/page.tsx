@@ -12,7 +12,6 @@ import Bonuses from "@/components/Bonuses";
 import FAQ from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
-import EnrollmentForm from "@/components/EnrollmentForm";
 import StickyCallToAction, { useStickyCallToAction } from "@/components/StickyCallToAction";
 import InstitutionsScroll from "@/components/InstitutionsScroll";
 import Dor from "@/components/Dor";
@@ -33,7 +32,6 @@ export default function Home() {
       <Benefits />
       <Testimonials />
       <Bonuses />
-      <EnrollmentForm />
       <FAQ />
       <FinalCTA />
       <Footer />
