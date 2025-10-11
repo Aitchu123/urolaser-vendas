@@ -101,13 +101,13 @@ export const Footer = () => {
                 className="flex items-center justify-center md:justify-start gap-2 text-white/70 hover:text-[#00a8cc] text-xs sm:text-sm transition-colors"
               >
                 <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
-                (11) 99999-9999
+                (12) 99124-6207
               </a>
             </div>
             <h4 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">Redes Sociais</h4>
             <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4">
               <motion.a
-                href="#"
+                href="https://www.instagram.com/instrumentandoo"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
                 className="group relative p-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500 transition-all duration-300 shadow-lg hover:shadow-pink-500/25"
@@ -117,7 +117,7 @@ export const Footer = () => {
               </motion.a>
 
               <motion.a
-                href="#"
+                href="https://www.facebook.com/share/193AiZFauM"
                 whileHover={{ scale: 1.2, rotate: -5 }}
                 whileTap={{ scale: 0.9 }}
                 className="group relative p-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
@@ -127,17 +127,7 @@ export const Footer = () => {
               </motion.a>
 
               <motion.a
-                href="#"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="group relative p-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-400 hover:to-cyan-500 transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
-              >
-                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-cyan-600 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
-              </motion.a>
-
-              <motion.a
-                href="#"
+                href="https://www.youtube.com/@marceloinstrumentador/featured"
                 whileHover={{ scale: 1.2, rotate: -5 }}
                 whileTap={{ scale: 0.9 }}
                 className="group relative p-2 rounded-full bg-gradient-to-r from-red-500 to-red-700 hover:from-red-400 hover:to-red-600 transition-all duration-300 shadow-lg hover:shadow-red-500/25"

@@ -195,10 +195,7 @@ const Benefits = () => {
               <motion.button
                 className="inline-flex items-center bg-gradient-to-r from-[#85c5c7] to-[#00a8cc] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 group relative overflow-hidden w-full sm:w-auto justify-center"
                 onClick={() => {
-                  const enrollmentSection = document.getElementById('enrollment');
-                  if (enrollmentSection) {
-                    enrollmentSection.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  window.open('https://wa.me/5512991246207?text=quero%20saber%20mais', '_blank');
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

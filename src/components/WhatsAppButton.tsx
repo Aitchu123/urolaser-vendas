@@ -48,9 +48,23 @@ export default function WhatsAppButton({
   }, []);
 
   const handleWhatsAppClick = () => {
+    console.log('WhatsApp button clicked!'); // Debug
+    console.log('Phone:', phoneNumber); // Debug
+    console.log('Message:', message); // Debug
+    
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank");
+    
+    console.log('WhatsApp URL:', whatsappUrl); // Debug
+    
+    // Tentar abrir de forma mais robusta
+    try {
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    } catch (error) {
+      console.error('Erro ao abrir WhatsApp:', error);
+      // Fallback: tentar com window.location
+      window.location.href = whatsappUrl;
+    }
   };
 
   const handleExpand = () => {

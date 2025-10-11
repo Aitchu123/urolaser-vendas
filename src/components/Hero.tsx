@@ -104,11 +104,6 @@ const Hero = () => {
     setShowSoundButton(false);
   };
 
-  // Removido o useEffect que escondia o botão automaticamente
-  // O botão agora só desaparece quando clicado
-
-  // Função removida pois o botão agora redireciona para o WhatsApp
-
   return (
     <div className="pt-4 pb-8 sm:pt-6 sm:pb-12 md:pt-8 md:pb-16 lg:pt-12 lg:pb-20 min-h-screen overflow-hidden relative flex justify-center items-center px-4 sm:px-6">
       <motion.div
@@ -237,15 +232,21 @@ const Hero = () => {
             variants={heroChildVariants}
             className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-6 md:mt-10 px-4"
           >
-            <Button
-              onClick={handleEnrollClick}
-              size="lg"
-              className="text-base sm:text-lg px-6 sm:px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-            >
-              Inscrever-se Agora
-            </Button>
             <a
-              href="https://wa.me/5512991246207"
+              href="https://wa.me/5512991246207?text=quero%20saber%20mais"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <Button
+                size="lg"
+                className="text-base sm:text-lg px-6 sm:px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 w-full"
+              >
+                Inscrever-se Agora
+              </Button>
+            </a>
+            <a
+              href="https://www.youtube.com/watch?v=VJlRN6PNWiI"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
@@ -291,7 +292,7 @@ const Hero = () => {
                 ref={iframeRef}
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/VJlRN6PNWiI?start=5&autoplay=1&mute=1&loop=1&playlist=VJlRN6PNWiI&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&enablejsapi=1"
+                src="https://www.youtube.com/embed/7gGk3elcHKw?start=5&autoplay=1&mute=1&loop=1&playlist=7gGk3elcHKw&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&enablejsapi=1"
                 title="Urolaser Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

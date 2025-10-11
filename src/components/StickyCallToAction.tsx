@@ -97,14 +97,7 @@ export default function StickyCallToAction({
   }, [offers.length]);
 
   const handleCtaClick = (action: 'trial' | 'buy') => {
-    trackCTAClick('sticky_cta', action, utmParams as Record<string, string>);
-
-    if (action === 'trial') {
-      router.push('/inscricao');
-    } else {
-      // Redirecionar para o link de inscrição
-      window.open('https://urolaser.com.br/inscricao-representante', '_blank');
-    }
+    window.open('https://wa.me/5512991246207?text=quero%20saber%20mais', '_blank');
 
     onCtaClick?.(action);
   };

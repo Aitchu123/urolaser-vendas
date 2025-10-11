@@ -36,13 +36,13 @@ export default function VendasPage() {
       <FinalCTA />
       <Footer />
       <StickyCallToAction
-        propIsVisible={isVisible}
+        propIsVisible={true}
         onDismiss={handleDismiss}
         position="bottom"
       />
       <WhatsAppButton
-        phoneNumber="5511999999999"
-        message="Olá! Gostaria de saber mais sobre o Curso de Representação Hospitalar da Urolaser. Vim através do site!"
+        phoneNumber="5512991246207"
+        message="quero saber mais"
       />
     </main>
   );
