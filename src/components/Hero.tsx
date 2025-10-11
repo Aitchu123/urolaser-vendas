@@ -298,7 +298,11 @@ const Hero = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 className="w-full aspect-video"
-                style={{ minHeight: '400px' }}
+                style={{
+                  minHeight: '190px',
+                  maxHeight: '400px',
+                  height: 'auto'
+                }}
               ></iframe>
 
               {/* Botão de Som Piscante */}

@@ -77,7 +77,7 @@ export const testimonials = [
     content:
       "Mesmo sem formação médica prévia, consegui aprender as técnicas e hoje trabalho como assistente em cirurgias com laser. O curso mudou minha carreira!",
     rating: 5,
-    image: "/placeholder-400x400.svg",
+    image: "/avatar-grace.6613a9ef.png",
   },
   {
     id: 2,
@@ -86,7 +86,7 @@ export const testimonials = [
     content:
       "Excelente didática e conteúdo atualizado. Como instrumentador, o conhecimento em tecnologia laser me tornou mais valorizado no mercado.",
     rating: 5,
-    image: "/placeholder-400x400.svg",
+    image: "/junior-alves.51b0a18b.webp",
   },
   {
     id: 3,
@@ -95,7 +95,7 @@ export const testimonials = [
     content:
       "Curso completo e bem estruturado. Consegui fazer a transição para área cirúrgica e hoje atuo com equipamentos de laser urológico.",
     rating: 5,
-    image: "/placeholder-400x400.svg",
+    image: "/dani.bb6a2968.png",
   },
   {
     id: 4,
@@ -104,7 +104,7 @@ export const testimonials = [
     content:
       "Sempre quis trabalhar na área da saúde. Este curso me deu a oportunidade de entrar no mercado cirúrgico mesmo sem ter estudado medicina.",
     rating: 5,
-    image: "/placeholder-400x400.svg",
+    image: "/wellison.05a28ec9.png",
   },
   {
     id: 5,
@@ -113,7 +113,25 @@ export const testimonials = [
     content:
       "Como enfermeira, o curso me permitiu me especializar em uma área específica e aumentar significativamente minha renda mensal.",
     rating: 5,
-    image: "/placeholder-400x400.svg",
+    image: "/testimonial-laura.0181a23b.png",
+  },
+  {
+    id: 6,
+    name: "Adriane Costa",
+    role: "Técnica em Saúde",
+    content:
+      "O curso superou minhas expectativas. Hoje trabalho em uma clínica especializada e minha renda triplicou após a especialização.",
+    rating: 5,
+    image: "/avatar-adriane.5a45a98e.png",
+  },
+  {
+    id: 7,
+    name: "Felipe Rodrigues",
+    role: "Auxiliar de Enfermagem",
+    content:
+      "Profissionais experientes e metodologia excelente. Consegui uma promoção logo após concluir o curso.",
+    rating: 5,
+    image: "/avatar-felipe.cfc1a97f.webp",
   },
 ];
 
