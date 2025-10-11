@@ -3,26 +3,72 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { CheckCircle, Star, Users, TrendingUp, Shield, Clock, ArrowRight, Gift } from 'lucide-react'
+import { CheckCircle, Star, Users, TrendingUp, Shield, Clock, ArrowRight, Gift, AlertCircle } from 'lucide-react'
+import { evolutionApiService } from '@/services/evolution-api'
+import { LeadFormData } from '@/types/evolution-api'
 
 export default function LeadCapturePage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<LeadFormData>({
     name: '',
     email: '',
     whatsapp: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' })
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: '' })
 
-    // Simular envio do formulário
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    try {
+      // Validação básica
+      if (!formData.name.trim() || !formData.email.trim() || !formData.whatsapp.trim()) {
+        throw new Error('Todos os campos são obrigatórios')
+      }
 
-    // Redirecionar para a página de vendas
-    router.push('/vendas')
+      // Validação de email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(formData.email)) {
+        throw new Error('Por favor, insira um email válido')
+      }
+
+      // Validação de WhatsApp (formato brasileiro)
+      const whatsappRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$|^\d{10,11}$|^\+\d{12,13}$/
+      if (!whatsappRegex.test(formData.whatsapp.replace(/\s/g, ''))) {
+        throw new Error('Por favor, insira um WhatsApp válido')
+      }
+
+      // Enviar dados via Evolution API
+      const result = await evolutionApiService.sendLeadNotification(formData)
+
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Dados enviados com sucesso! Redirecionando...'
+        })
+
+        // Aguardar um pouco para mostrar a mensagem de sucesso
+        await new Promise(resolve => setTimeout(resolve, 2000))
+
+        // Redirecionar para a página de vendas
+        router.push('/vendas')
+      } else {
+        throw new Error(result.error.message || 'Erro ao enviar dados')
+      }
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error)
+      setSubmitStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Erro inesperado. Tente novamente.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,7 +152,7 @@ export default function LeadCapturePage() {
                 <span className="text-white font-semibold text-xs md:text-sm">4.9/5</span>
               </div>
               <p className="text-blue-100 text-xs">
-                "Mais de <strong className="text-yellow-400">2.847 pessoas</strong> já descobriram este segredo e estão transformando suas carreiras!"
+                &ldquo;Mais de <strong className="text-yellow-400">2.847 pessoas</strong> já descobriram este segredo e estão transformando suas carreiras!&rdquo;
               </p>
             </div>
 
@@ -142,6 +188,22 @@ export default function LeadCapturePage() {
 
             {/* Form */}
             <div className="flex-grow flex flex-col justify-center">
+              {/* Status Message */}
+              {submitStatus.type && (
+                <div className={`mb-4 p-3 rounded-lg flex items-center space-x-2 ${
+                  submitStatus.type === 'success' 
+                    ? 'bg-green-50 border border-green-200 text-green-800' 
+                    : 'bg-red-50 border border-red-200 text-red-800'
+                }`}>
+                  {submitStatus.type === 'success' ? (
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  ) : (
+                    <AlertCircle className="w-4 h-4 text-red-600" />
+                  )}
+                  <span className="text-sm font-medium">{submitStatus.message}</span>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div>
                 <label htmlFor="name" className="block text-xs md:text-sm font-semibold text-gray-700 mb-0.5 md:mb-1">
