@@ -118,7 +118,7 @@ const Hero = () => {
             className="text-xs sm:text-sm uppercase tracking-wider bg-[#85c5c7]/10 max-w-max mx-auto px-3 sm:px-4 py-2 rounded-full border border-[#85c5c7]/20 backdrop-blur-3xl mb-4 sm:mb-6 md:mb-10"
           >
             <AnimatedShinyText className="font-semibold text-[#85c5c7]" shimmerWidth={150}>
-              🏥 Curso #1 em marcelo gay
+              🏥 Curso #1 em Representação Hospitalar
             </AnimatedShinyText>
           </motion.div>
 
