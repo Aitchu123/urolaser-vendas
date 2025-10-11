@@ -287,23 +287,18 @@ const Hero = () => {
             style={{ scale }}
             className="w-full"
           >
-            <div className="w-full rounded-lg sm:rounded-xl shadow-2xl overflow-hidden border-2 sm:border-4 border-[#00a8cc]/30 relative">
-              <iframe
-                ref={iframeRef}
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/7gGk3elcHKw?start=5&autoplay=1&mute=1&loop=1&playlist=7gGk3elcHKw&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&enablejsapi=1"
-                title="Urolaser Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="w-full aspect-video"
-                style={{
-                  minHeight: '190px',
-                  maxHeight: '400px',
-                  height: 'auto'
-                }}
-              ></iframe>
+            <div className="w-full max-w-9xl mx-auto rounded-lg sm:rounded-xl shadow-2xl overflow-hidden border-2 sm:border-4 border-[#00a8cc]/30 relative">
+              <div className="relative w-full aspect-video" >
+                <iframe
+                  ref={iframeRef}
+                  src="https://www.youtube.com/embed/7gGk3elcHKw?start=5&autoplay=1&mute=1&loop=1&playlist=7gGk3elcHKw&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&enablejsapi=1"
+                  title="Urolaser Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="absolute top-0 left-0 w-full h-full"
+                ></iframe>
+              </div>
 
               {/* Botão de Som Piscante */}
               {showSoundButton && (
@@ -391,12 +386,12 @@ const Hero = () => {
           <motion.div
             className="absolute inset-0 bg-gradient-to-br from-[#00a8cc] to-[#85c5c7] blur-[200px] scale-y-75 scale-x-125 rounded-full -z-10 opacity-60"
             initial={{
-              scale: 0.4,
+              scale: 0.9,
               opacity: 0,
             }}
             animate={{
-              opacity: [0.6, 0.8, 0.6],
-              scale: [1, 1.2, 1],
+              opacity: [0.4, 0.6, 0.4],
+              scale: [0.9, 1.1, 0.9],
             }}
             transition={{
               duration: 7,
@@ -409,6 +404,9 @@ const Hero = () => {
         </motion.div>
 
         {/* Removendo o gradiente de desvanecimento que estava cobrindo o conteúdo */}
+
+        {/* Gradiente suave para transição entre seções */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/20 via-black/10 to-transparent pointer-events-none z-20"></div>
       </motion.div>
     </div>
   );
