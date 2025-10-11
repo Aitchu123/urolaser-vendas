@@ -10,29 +10,29 @@ import { motion } from "framer-motion";
 import { HelpCircle, ChevronDown } from "lucide-react";
 
 // Componentes Accordion simples inline
-const Accordion = ({ children, type, collapsible, className = "" }: { 
-  children: React.ReactNode; 
-  type: string; 
-  collapsible: boolean; 
-  className?: string; 
+const Accordion = ({ children, type, collapsible, className = "" }: {
+  children: React.ReactNode;
+  type: string;
+  collapsible: boolean;
+  className?: string;
 }) => (
   <div className={className}>
     {children}
   </div>
 );
 
-const AccordionItem = ({ children, value, className = "" }: { 
-  children: React.ReactNode; 
-  value: string; 
-  className?: string; 
+const AccordionItem = ({ children, value, className = "" }: {
+  children: React.ReactNode;
+  value: string;
+  className?: string;
 }) => (
   <div className={className} data-value={value}>
     {children}
   </div>
 );
 
-const AccordionTrigger = ({ children, className = "", onClick }: { 
-  children: React.ReactNode; 
+const AccordionTrigger = ({ children, className = "", onClick }: {
+  children: React.ReactNode;
   className?: string;
   onClick?: () => void;
 }) => (
@@ -41,8 +41,8 @@ const AccordionTrigger = ({ children, className = "", onClick }: {
   </button>
 );
 
-const AccordionContent = ({ children, className = "", isOpen }: { 
-  children: React.ReactNode; 
+const AccordionContent = ({ children, className = "", isOpen }: {
+  children: React.ReactNode;
   className?: string;
   isOpen?: boolean;
 }) => (
@@ -61,9 +61,9 @@ export const FAQ = () => {
         "O curso possui mais de 20 horas de conteúdo em vídeo, divididas em 5 módulos. Você pode assistir no seu próprio ritmo. A maioria dos alunos conclui em 4 a 6 semanas estudando 1 hora por dia. Mas você tem acesso vitalício, então pode levar o tempo que precisar!",
     },
     {
-      question: "Preciso ter experiência prévia em vendas?",
+      question: "Preciso ter experiência prévia na area da saude?",
       answer:
-        "Não! O curso é desenhado tanto para iniciantes quanto para profissionais experientes. Começamos do zero, explicando todos os fundamentos, e avançamos para técnicas sofisticadas. Temos alunos que nunca trabalharam com vendas e hoje são top performers.",
+        "Não! O curso é desenhado tanto para iniciantes quanto para profissionais experientes. Começamos do zero, explicando todos os fundamentos, e avançamos para técnicas sofisticadas. Temos alunos que nunca trabalharam na saude e hoje são top performers.",
     },
     {
       question: "O certificado é reconhecido?",
@@ -78,7 +78,7 @@ export const FAQ = () => {
     {
       question: "E se eu não gostar do curso?",
       answer:
-        "Você tem 30 dias de garantia incondicional! Se por qualquer motivo não estiver satisfeito, basta enviar um email solicitando o reembolso e devolvemos 100% do valor pago. Sem burocracia, sem perguntas. Simples assim.",
+        "Você tem 07 dias de garantia incondicional! Se por qualquer motivo não estiver satisfeito, basta enviar um email solicitando o reembolso e devolvemos 100% do valor pago. Sem burocracia, sem perguntas. Simples assim.",
     },
     {
       question: "Terei suporte durante o curso?",
@@ -136,14 +136,14 @@ export const FAQ = () => {
             {faqs.map((faq, index) => {
               const itemValue = `faq-${index}`;
               const isOpen = openItem === itemValue;
-              
+
               return (
                 <AccordionItem
                   key={index}
                   value={itemValue}
                   className="bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:border-[#00a8cc]/30 transition-all overflow-hidden"
                 >
-                  <AccordionTrigger 
+                  <AccordionTrigger
                     className="px-4 sm:px-6 py-4 sm:py-5 hover:no-underline text-left group w-full"
                     onClick={() => toggleItem(itemValue)}
                   >

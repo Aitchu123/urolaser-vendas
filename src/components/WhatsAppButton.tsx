@@ -7,7 +7,6 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X } from "lucide-react";
 
 interface WhatsAppButtonProps {
   phoneNumber?: string;
@@ -21,13 +20,11 @@ export default function WhatsAppButton({
   className = ""
 }: WhatsAppButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [showPulse, setShowPulse] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
 
       // Mostrar o botão após rolar 200px
       setIsVisible(scrollY > 200);
@@ -48,14 +45,8 @@ export default function WhatsAppButton({
   }, []);
 
   const handleWhatsAppClick = () => {
-    console.log('WhatsApp button clicked!'); // Debug
-    console.log('Phone:', phoneNumber); // Debug
-    console.log('Message:', message); // Debug
-    
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    
-    console.log('WhatsApp URL:', whatsappUrl); // Debug
     
     // Tentar abrir de forma mais robusta
     try {
@@ -67,10 +58,7 @@ export default function WhatsAppButton({
     }
   };
 
-  const handleExpand = () => {
-    setIsExpanded(!isExpanded);
-    setShowPulse(false);
-  };
+
 
   return (
     <AnimatePresence>

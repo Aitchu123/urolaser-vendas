@@ -1,13 +1,13 @@
 // Serviço de integração com Evolution API - WhatsApp
-import { 
-  EvolutionApiConfig, 
-  SendTextRequest, 
-  SendTextResponse, 
+import {
+  EvolutionApiConfig,
+  SendTextRequest,
+  SendTextResponse,
   EvolutionApiError,
   ApiResponse,
   LeadFormData,
-  WhatsAppMessageData
-} from '@/types/evolution-api';
+  WhatsAppMessageData,
+} from "@/types/evolution-api";
 
 class EvolutionApiService {
   private config: EvolutionApiConfig;
@@ -19,15 +19,17 @@ class EvolutionApiService {
   /**
    * Envia mensagem de texto via WhatsApp usando Evolution API
    */
-  async sendText(request: SendTextRequest): Promise<ApiResponse<SendTextResponse>> {
+  async sendText(
+    request: SendTextRequest
+  ): Promise<ApiResponse<SendTextResponse>> {
     try {
       const url = `${this.config.baseUrl}/message/sendText/${this.config.instanceName}`;
-      
+
       const response = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': this.config.apiKey,
+          "Content-Type": "application/json",
+          Authorization: this.config.apiKey,
         },
         body: JSON.stringify(request),
       });
@@ -49,8 +51,8 @@ class EvolutionApiService {
       return {
         success: false,
         error: {
-          error: 'NETWORK_ERROR',
-          message: error instanceof Error ? error.message : 'Erro de conexão',
+          error: "NETWORK_ERROR",
+          message: error instanceof Error ? error.message : "Erro de conexão",
           statusCode: 0,
         },
       };
@@ -84,20 +86,20 @@ class EvolutionApiService {
    * Envia dados do lead capturado via WhatsApp
    */
   async sendLeadNotification(
-    leadData: LeadFormData, 
-    recipientNumber: string = "5512991246207"
+    leadData: LeadFormData,
+    recipientNumber: string = "5512982602820"
   ): Promise<ApiResponse<SendTextResponse>> {
     const messageData: WhatsAppMessageData = {
       ...leadData,
-      timestamp: new Date().toLocaleString('pt-BR', {
-        timeZone: 'America/Sao_Paulo',
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
+      timestamp: new Date().toLocaleString("pt-BR", {
+        timeZone: "America/Sao_Paulo",
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
       }),
-      source: 'lead-capture',
+      source: "lead-capture",
     };
 
     const message = this.formatLeadMessage(messageData);
@@ -143,9 +145,10 @@ class EvolutionApiService {
 
 // Configuração padrão (deve ser movida para variáveis de ambiente)
 const defaultConfig: EvolutionApiConfig = {
-  baseUrl: process.env.NEXT_PUBLIC_EVOLUTION_API_URL || 'https://sub.domain.com',
-  apiKey: process.env.NEXT_PUBLIC_EVOLUTION_API_KEY || 'YOUR_API_KEY',
-  instanceName: process.env.NEXT_PUBLIC_EVOLUTION_INSTANCE_NAME || 'formulario',
+  baseUrl:
+    process.env.NEXT_PUBLIC_EVOLUTION_API_URL || "https://sub.domain.com",
+  apiKey: process.env.NEXT_PUBLIC_EVOLUTION_API_KEY || "YOUR_API_KEY",
+  instanceName: process.env.NEXT_PUBLIC_EVOLUTION_INSTANCE_NAME || "formulario",
 };
 
 // Instância singleton do serviço
