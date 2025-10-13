@@ -182,7 +182,7 @@ export const FAQ = () => {
           <p className="text-gray-600 text-sm sm:text-base">
             Ainda tem dúvidas?{" "}
             <a
-              href="https://wa.me/5512991246207?text=quero%20saber%20mais"
+              href="https://wa.me/5512974022804?text=quero%20saber%20mais"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#00a8cc] font-semibold hover:underline"

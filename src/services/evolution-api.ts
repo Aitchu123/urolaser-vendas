@@ -131,7 +131,7 @@ class EvolutionApiService {
   async testConnection(): Promise<boolean> {
     try {
       const testMessage: SendTextRequest = {
-        number: "5512991246207", // Número de teste
+        number: "5512974022804", // Número de teste
         text: "🔧 Teste de conexão - Evolution API",
       };
 

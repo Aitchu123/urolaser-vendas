@@ -97,7 +97,7 @@ export default function StickyCallToAction({
   }, [offers.length]);
 
   const handleCtaClick = (action: 'trial' | 'buy') => {
-    window.open('https://wa.me/5512991246207?text=quero%20saber%20mais', '_blank');
+    window.open('https://wa.me/5512974022804?text=quero%20saber%20mais', '_blank');
 
     onCtaClick?.(action);
   };
