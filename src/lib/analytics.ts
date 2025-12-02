@@ -20,8 +20,7 @@ export const trackCTAClick = (
     ...utmParams
   };
 
-  // Log para desenvolvimento
-  console.log('CTA Click:', eventData);
+  console.warn('CTA Click:', eventData);
 
   // Aqui você pode implementar a integração com Google Analytics, Facebook Pixel, etc.
   // Exemplo para Google Analytics 4
