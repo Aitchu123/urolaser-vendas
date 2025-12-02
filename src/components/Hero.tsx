@@ -233,7 +233,7 @@ const Hero = () => {
             className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-6 md:mt-10 px-4"
           >
             <a
-              href="https://wa.me/5512974022804?text=quero%20saber%20mais"
+              href="https://pay.kiwify.com.br/S70uCPg"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
