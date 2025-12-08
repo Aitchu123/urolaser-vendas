@@ -88,7 +88,7 @@ export const FAQ = () => {
     {
       question: "Posso parcelar o pagamento?",
       answer:
-        "Sim! Você pode parcelar em até 12x de R$ 97 no cartão de crédito, sem juros. Também aceitamos pagamento à vista (R$ 997) via Pix ou boleto bancário com desconto especial.",
+        "Sim! Você pode parcelar em até 12x de R$ 13,00 no cartão de crédito, sem juros. Também aceitamos pagamento à vista (R$ 137) via Pix ou boleto bancário com desconto especial.",
     },
     {
       question: "Por quanto tempo terei acesso ao conteúdo?",

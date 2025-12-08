@@ -109,12 +109,11 @@ export const FinalCTA = () => {
             transition={{ delay: 0.45 }}
             className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 max-w-md mx-auto"
           >
-            <p className="text-white/70 text-sm sm:text-base mb-2">De R$ 1.697 por apenas:</p>
+            <p className="text-white/70 text-sm sm:text-base mb-2">De R$ 677 por apenas:</p>
             <div className="flex items-center justify-center gap-2 mb-2">
-              <span className="text-white/50 line-through text-lg sm:text-xl">R$ 997</span>
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#85c5c7]">R$ 927</span>
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#85c5c7]">R$ 137</span>
             </div>
-            <p className="text-[#85c5c7] text-sm sm:text-base font-semibold">ou 12x de R$ 91,00</p>
+            <p className="text-[#85c5c7] text-sm sm:text-base font-semibold">ou 12x de R$ 13,00</p>
           </motion.div>
 
           {/* CTA Button */}
