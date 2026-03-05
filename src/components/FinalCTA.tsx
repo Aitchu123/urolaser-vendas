@@ -128,12 +128,12 @@ export const FinalCTA = () => {
               size="lg"
               className="w-full sm:w-auto bg-gradient-to-r from-[#00a8cc] to-[#85c5c7] hover:from-[#0180b3] hover:to-[#6bb5b7] text-white px-6 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8 text-base sm:text-lg md:text-xl lg:text-2xl font-black rounded-2xl shadow-2xl hover:shadow-[#00a8cc]/50 transition-all duration-300 hover:scale-105 group relative overflow-hidden"
               onClick={() => {
-                window.open('https://pay.kiwify.com.br/S70uCPg', '_blank');
+                window.open('https://pay.hotmart.com/C76189835Y?off=5menq1c5', '_blank');
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
-                🚀 QUERO TRANSFORMAR MINHA CARREIRA AGORA
+                🚀 QUERO FAZER MINHA MATRICULA AGORA
                 <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:translate-x-2 transition-transform" />
               </span>
             </Button>

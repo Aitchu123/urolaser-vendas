@@ -233,7 +233,7 @@ const Hero = () => {
             className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-6 md:mt-10 px-4"
           >
             <a
-              href="https://pay.kiwify.com.br/S70uCPg"
+              href="https://pay.hotmart.com/C76189835Y?off=5menq1c5"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
@@ -242,7 +242,7 @@ const Hero = () => {
                 size="lg"
                 className="text-base sm:text-lg px-6 sm:px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 w-full"
               >
-                Inscrever-se Agora
+                Quero fazer minha matricula
               </Button>
             </a>
             <a

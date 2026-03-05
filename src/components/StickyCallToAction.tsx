@@ -57,7 +57,7 @@ export default function StickyCallToAction({
   onCtaClick,
   onDismiss,
   trialText = "🔬 Inscrição Antecipada",
-  buyText = "🩺 Garantir Vaga",
+  buyText = "Quero fazer minha matricula",
   showDismiss = true,
   position = 'bottom',
   className = '',
@@ -97,8 +97,7 @@ export default function StickyCallToAction({
   }, [offers.length]);
 
   const handleCtaClick = (action: 'trial' | 'buy') => {
-    window.open('https://pay.kiwify.com.br/S70uCPg', '_blank');
-
+    window.open('https://pay.hotmart.com/C76189835Y?off=5menq1c5', '_blank');
     onCtaClick?.(action);
   };
 

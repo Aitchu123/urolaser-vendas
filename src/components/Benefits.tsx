@@ -195,17 +195,15 @@ const Benefits = () => {
               <motion.button
                 className="inline-flex items-center bg-gradient-to-r from-[#85c5c7] to-[#00a8cc] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 group relative overflow-hidden w-full sm:w-auto justify-center"
                 onClick={() => {
-                  window.open('https://pay.kiwify.com.br/S70uCPg', '_blank');
+                  window.open('https://pay.hotmart.com/C76189835Y?off=5menq1c5', '_blank');
                 }}
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
-                <motion.div
-                  className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-                  initial={false}
-                />
-                Garantir minha vaga
-                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
+                <span className="relative z-10 flex items-center">
+                  Quero fazer minha matricula
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
               </motion.button>
             </motion.div>
           </motion.div>

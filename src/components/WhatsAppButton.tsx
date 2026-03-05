@@ -15,23 +15,14 @@ interface WhatsAppButtonProps {
 }
 
 export default function WhatsAppButton({
-  phoneNumber = "5511999999999",
-  message = "Olá! Gostaria de saber mais sobre o Curso de Representação Hospitalar da Urolaser.",
+  phoneNumber = "5512991860706",
+  message = "Quero saber mais",
   className = ""
 }: WhatsAppButtonProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [showPulse, setShowPulse] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      // Mostrar o botão após rolar 200px
-      setIsVisible(scrollY > 200);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
     // Pulsar a cada 5 segundos para chamar atenção
     const pulseInterval = setInterval(() => {
       setShowPulse(true);
@@ -39,7 +30,6 @@ export default function WhatsAppButton({
     }, 5000);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       clearInterval(pulseInterval);
     };
   }, []);

@@ -5,23 +5,45 @@
 
 "use client";
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import Hero from "@/components/Hero";
+import Features from "@/components/Features";
+import Benefits from "@/components/Benefits";
+import Bonuses from "@/components/Bonuses";
+import FAQ from "@/components/FAQ";
+import { Footer } from "@/components/Footer";
+import Testimonials from "@/components/Testimonials";
+import StickyCallToAction, { useStickyCallToAction } from "@/components/StickyCallToAction";
+import InstitutionsScroll from "@/components/InstitutionsScroll";
+import Dor from "@/components/Dor";
+import FeaturesSectionDemo from "@/components/features-section-demo-3";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import { FinalCTA } from "@/components/FinalCTA";
 
-export default function Home() {
-  const router = useRouter();
-
-  useEffect(() => {
-    // Redirecionar para a página de captura de leads
-    router.replace('/lead-capture');
-  }, [router]);
+export default function HomePage() {
+  const { isVisible, handleDismiss } = useStickyCallToAction();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center">
-      <div className="text-center text-white">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-        <p className="text-lg">Redirecionando...</p>
-      </div>
-    </div>
+    <main className="min-h-screen bg-white">
+      <Hero />
+      <InstitutionsScroll />
+      <Dor />
+      <FeaturesSectionDemo />
+      <Features />
+      <Benefits />
+      <Testimonials />
+      <Bonuses />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
+      <StickyCallToAction
+        propIsVisible={true}
+        onDismiss={handleDismiss}
+        position="bottom"
+      />
+      <WhatsAppButton
+        phoneNumber="5512991860706"
+        message="Quero saber mais"
+      />
+    </main>
   );
 }
