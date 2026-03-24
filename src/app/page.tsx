@@ -41,7 +41,7 @@ export default function HomePage() {
         position="bottom"
       />
       <WhatsAppButton
-        phoneNumber="5512991860706"
+        phoneNumber="5512982044856"
         message="Quero saber mais"
       />
     </main>
